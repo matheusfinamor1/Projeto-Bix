@@ -101,8 +101,16 @@ class RegisterFragment : Fragment() {
 
             status.observe(viewLifecycleOwner) {
                 if (it) {
-                    val directions = RegisterFragmentDirections.registerFragmentToLoginFragment()
+                    val directions = RegisterFragmentDirections.registerFragmentToHomeFragment()
                     findNavController().navigate(directions)
+                    val alertDialog = handlerAlertDialog(
+                        requireContext(),
+                        title = getString(R.string.title_success),
+                        icon = R.drawable.ic_confirmed,
+                        message = getString(R.string.message_account_create_success),
+                        textPositiveButton = getString(R.string.text_button_ok)
+                    )
+                    alertDialog.show()
                 }
             }
             msgFailureGoogleLogin.observe(viewLifecycleOwner) {
