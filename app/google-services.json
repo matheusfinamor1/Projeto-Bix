@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "136520155950",
+    "project_id": "projeto-bix-98ff6",
+    "storage_bucket": "projeto-bix-98ff6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:136520155950:android:1d133558afd273315970bf",
+        "android_client_info": {
+          "package_name": "com.example.projetobix"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "136520155950-q80m3drrsmare0u2ssif1sev5qapsk2r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.projetobix",
+            "certificate_hash": "20f048990416570faf94f8bb12f091c7b40a95cc"
+          }
+        },
+        {
+          "client_id": "136520155950-gf43semb6c242qdrs202ob7pc8rpit31.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlRgF5iwvIs3Cr-EoNODM1-FYMzYtoYJc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "136520155950-gf43semb6c242qdrs202ob7pc8rpit31.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
