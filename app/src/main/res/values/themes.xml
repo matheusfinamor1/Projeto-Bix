@@ -5,5 +5,19 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="MyTheme" parent="Theme.Material3.Light.NoActionBar">
+
+        <item name="colorPrimary">@color/blue_t</item>
+        <item name="colorPrimaryDark">@color/black_t</item>
+        <item name="colorAccent">@color/dark_gray_t</item>
+
+    </style>
+
+    <style name="roundedImageViewRounded">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
     <style name="Theme.ProjetoBix" parent="Base.Theme.ProjetoBix" />
 </resources>

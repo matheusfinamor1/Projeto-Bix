@@ -1,3 +1,55 @@
 <resources>
-    <string name="app_name">Projeto Bix</string>
+    <string name="app_name">Bix</string>
+    <string name="text_example_post">Este é meu primeiro texto que estou digitando com intuito de mostrar com o layout esta funcionando.</string>
+    <string name="text_example_name_user">matheus_finamor</string>
+    <string name="text_screen_login_for_register">Deseja se registrar? Clique aqui</string>
+    <string name="text_button_login_google">Fazer login com o Google</string>
+    <string name="text_or_access">ou acesse por</string>
+    <string name="text_email">e-mail</string>
+    <string name="text_password">senha</string>
+    <string name="text_remember_password">Esqueceu sua senha?</string>
+    <string name="text_register">Não tem uma conta? <font color="#3498db">Cadastre-se</font></string>
+    <string name="text_or_register">ou registre-se por</string>
+    <string name="text_register_google">Registrar-se através do Google</string>
+    <string name="text_confirm_password">confirme sua senha</string>
+    <string name="text_create_account">Criar conta</string>
+    <string name="text_enter">Entrar</string>
+
+    <string name="text_fill_in_all_fields">Preencha todos os campos!</string>
+    <string name="text_user_do_not_registered">Usuário não cadastrado!</string>
+    <string name="text_email_or_password_do_not_match">Email ou senha não correspondem!</string>
+    <string name="text_error_login">Erro ao fazer login!</string>
+    <string name="text_error">Erro!</string>
+    <string name="text_strong_password">Digite uma senha mais forte!</string>
+    <string name="text_valid_email">Digite um e-mail válido!</string>
+    <string name="text_registered_email">E-mail ja cadastrado!</string>
+    <string name="text_error_registered">Erro ao cadastrar!</string>
+
+    <string name="text_button_ok">OK</string>
+    <string name="title_failure">Falha</string>
+    <string name="title_failure_login">Falha ao fazer login</string>
+    <string name="title_failure_registered">Falha no cadastrar</string>
+    <string name="title_failure_account_do_not_registered">Conta não encontrada</string>
+
+    <string name="message_unable_login">Não foi possível fazer o login, tente novamente mais tarde.</string>
+    <string name="message_failure_connection">Houve uma falha de conexão com a rede, tente novamente mais tarde.</string>
+    <string name="message_failure_registered">Houve uma falha ao realizar o cadastro, tente novamente mais tarde.</string>
+    <string name="message_failure_login">Por favor, preencha os campos de email e senha para que o login seja efetuado.</string>
+
+    <string name="text_button_recover">Recuperar</string>
+    <string name="text_confirm_email">confirme o e-mail</string>
+    <string name="text_tv_recover_screen">Digite o e-mail que deseja recuperar a senha</string>
+
+    <string name="message_failure_reset_password">Houve uma falha ao redefinir sua senha, tente novamente mais tarde!</string>
+    <string name="message_failure_reset_password_generic">Houve uma falha, tente novamente mais tarde!</string>
+    <string name="message_email_send">Verifique sua caixa de e-mail.</string>
+    <string name="message_email_different">Os e-mails digitados não são iguais. Por favor, digite o mesmo e-mail para que se consiga fazer a confirmação do mesmo.</string>
+    <string name="message_empty_fields">Preencha todos os campos para que se consiga ser feita a recuperação da senha.</string>
+
+    <string name="title_email_send">E-mail enviado</string>
+    <string name="title_email_different">E-mails diferentes</string>
+    <string name="title_empty_fields">Campos vazios</string>
+    <string name="text_button_google">Fazer login com o Google</string>
+
+
 </resources>
