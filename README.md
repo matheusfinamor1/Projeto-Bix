@@ -36,7 +36,7 @@ que remetem a uma boa interação com o usuário final.
 <img src="assets/onetap.gif" width="400" height="700">
 
 # Acesso ao projeto
-Para acessar o projeto, [clique aqui]([https://github.com/](https://github.com/matheusfinamor1/Projeto-Bix/tree/main)https://github.com/matheusfinamor1/Projeto-Bix/tree/main), onde você será redirecionado
+Para acessar o projeto, [clique aqui]([https://github.com/](https://github.com/matheusfinamor1/Projeto-Bix/tree/main)https://github.com/matheusfinamor1/Projeto-Bix/tree/main) onde você será redirecionado
 para a branch principal do projeto.
 
 # Abrir e rodar o projeto
