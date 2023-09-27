@@ -36,7 +36,7 @@ que remetem a uma boa interação com o usuário final.
 <img src="assets/onetap.gif" width="400" height="700">
 
 # Acesso ao projeto
-Para acessar o projeto, vá para a branch *main*, onde se encontra a versão estável e atualizada do projeto.
+Para acessar o projeto, vá para a branch [*main*](https://github.com/matheusfinamor1/Projeto-Bix/tree/main), onde se encontra a versão estável e atualizada do projeto.
 # Abrir e rodar o projeto
 
 ## :heavy_exclamation_mark: Atenção! :heavy_exclamation_mark:
