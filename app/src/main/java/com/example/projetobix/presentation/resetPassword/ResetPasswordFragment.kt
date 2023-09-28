@@ -64,11 +64,11 @@ class ResetPasswordFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner){
                 if(it){
-                    binding.loaderResetPasswordAnimation.isVisible = true
-                    binding.loaderResetPasswordAnimation.playAnimation()
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = true
+                    binding.includeLoaderAnimation.loaderAnimation.playAnimation()
                 }else{
-                    binding.loaderResetPasswordAnimation.isVisible = false
-                    binding.loaderResetPasswordAnimation.cancelAnimation()
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = false
+                    binding.includeLoaderAnimation.loaderAnimation.cancelAnimation()
                 }
             }
         }
