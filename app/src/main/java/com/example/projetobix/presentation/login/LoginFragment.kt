@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projetobix.R
@@ -93,6 +94,15 @@ class LoginFragment : Fragment() {
                 if (it) {
                     val directions = LoginFragmentDirections.loginFragmentToHomeFragment()
                     findNavController().navigate(directions)
+                }
+            }
+            isLoading.observe(viewLifecycleOwner){
+                if(it){
+                    binding.loaderLoginAnimation.isVisible = true
+                    binding.loaderLoginAnimation.playAnimation()
+                }else {
+                    binding.loaderLoginAnimation.isVisible = false
+                    binding.loaderLoginAnimation.cancelAnimation()
                 }
             }
         }
