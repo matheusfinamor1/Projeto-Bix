@@ -133,6 +133,16 @@ class RegisterFragment : Fragment() {
                     findNavController().navigate(directions)
                 }
             }
+            isLoading.observe(viewLifecycleOwner){
+                if(it){
+                    binding.loaderRegisterAnimation.visibility = View.VISIBLE
+                    binding.loaderRegisterAnimation.playAnimation()
+
+                }else{
+                    binding.loaderRegisterAnimation.visibility = View.GONE
+                    binding.loaderRegisterAnimation.cancelAnimation()
+                }
+            }
         }
     }
 

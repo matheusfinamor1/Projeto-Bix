@@ -73,10 +73,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:hint="@string/text_password"
-            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_register_email">
+            app:layout_constraintTop_toBottomOf="@id/til_register_email"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_register_password"
@@ -93,10 +93,10 @@
             android:layout_height="wrap_content"
             android:layout_margin="24dp"
             android:hint="@string/text_confirm_password"
-            app:passwordToggleEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_register_password">
+            app:layout_constraintTop_toBottomOf="@id/til_register_password"
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/et_register_confirm_password"
@@ -120,6 +120,20 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/til_register_confirm_password" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/loader_register_animation"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="centerCrop"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/loader" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
