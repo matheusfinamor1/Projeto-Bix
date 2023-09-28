@@ -6,12 +6,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentRegisterBinding
+import com.example.projetobix.databinding.LoaderAnimationBinding
 import com.example.projetobix.extensions.handlerAlertDialog
+import com.example.projetobix.extensions.updateLoaderAnimationVisibility
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -27,6 +28,9 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
+    private var _loaderBinding: LoaderAnimationBinding? = null
+    private val loaderBinding get() = _loaderBinding
+
     private val REQ_ONE_TAP = 2
     private var msgToast: String? = null
     private var showOneTapUI = true
@@ -41,6 +45,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        _loaderBinding = LoaderAnimationBinding.bind(binding.includeLoaderAnimation.root)
         return binding.root
     }
 
@@ -136,11 +141,9 @@ class RegisterFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner){
                 if(it){
-                    binding.includeLoaderAnimation.loaderAnimation.isVisible = true
-                    binding.includeLoaderAnimation.loaderAnimation.playAnimation()
+                    loaderBinding?.updateLoaderAnimationVisibility(true)
                 }else{
-                    binding.includeLoaderAnimation.loaderAnimation.isVisible = false
-                    binding.includeLoaderAnimation.loaderAnimation.cancelAnimation()
+                    loaderBinding?.updateLoaderAnimationVisibility(false)
                 }
             }
         }
