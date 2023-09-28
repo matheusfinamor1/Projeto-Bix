@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projetobix.R
@@ -135,12 +136,11 @@ class RegisterFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner){
                 if(it){
-                    binding.loaderRegisterAnimation.visibility = View.VISIBLE
-                    binding.loaderRegisterAnimation.playAnimation()
-
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = true
+                    binding.includeLoaderAnimation.loaderAnimation.playAnimation()
                 }else{
-                    binding.loaderRegisterAnimation.visibility = View.GONE
-                    binding.loaderRegisterAnimation.cancelAnimation()
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = false
+                    binding.includeLoaderAnimation.loaderAnimation.cancelAnimation()
                 }
             }
         }

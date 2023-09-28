@@ -98,11 +98,11 @@ class LoginFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner){
                 if(it){
-                    binding.loaderLoginAnimation.isVisible = true
-                    binding.loaderLoginAnimation.playAnimation()
-                }else {
-                    binding.loaderLoginAnimation.isVisible = false
-                    binding.loaderLoginAnimation.cancelAnimation()
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = true
+                    binding.includeLoaderAnimation.loaderAnimation.playAnimation()
+                }else{
+                    binding.includeLoaderAnimation.loaderAnimation.isVisible = false
+                    binding.includeLoaderAnimation.loaderAnimation.cancelAnimation()
                 }
             }
         }
