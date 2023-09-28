@@ -4,15 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentResetPasswordBinding
+import com.example.projetobix.databinding.LoaderAnimationBinding
 import com.example.projetobix.extensions.handlerAlertDialog
+import com.example.projetobix.extensions.updateLoaderAnimationVisibility
 
 class ResetPasswordFragment : Fragment() {
     private var _binding: FragmentResetPasswordBinding? = null
     private val binding get() = _binding!!
+
+    private var _loaderBinding: LoaderAnimationBinding? = null
+    private val loaderBinding get() = _loaderBinding
 
     private var msgToast: String? = null
 
@@ -24,6 +28,7 @@ class ResetPasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
+        _loaderBinding = LoaderAnimationBinding.bind(binding.includeLoaderAnimation.root)
         return binding.root
     }
 
@@ -64,11 +69,9 @@ class ResetPasswordFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner){
                 if(it){
-                    binding.includeLoaderAnimation.loaderAnimation.isVisible = true
-                    binding.includeLoaderAnimation.loaderAnimation.playAnimation()
+                    loaderBinding?.updateLoaderAnimationVisibility(true)
                 }else{
-                    binding.includeLoaderAnimation.loaderAnimation.isVisible = false
-                    binding.includeLoaderAnimation.loaderAnimation.cancelAnimation()
+                    loaderBinding?.updateLoaderAnimationVisibility(false)
                 }
             }
         }
