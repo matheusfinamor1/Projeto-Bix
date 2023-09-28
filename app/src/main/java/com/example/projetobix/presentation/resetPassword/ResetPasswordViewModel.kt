@@ -15,12 +15,17 @@ class ResetPasswordViewModel: ViewModel() {
     private val _msgFailureSendResetPassword = MutableLiveData<Exception>()
     val msgFailureSendResetPassword: LiveData<Exception> = _msgFailureSendResetPassword
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun resetPassword(email: String){
+        _isLoading.value = true
         firebaseAuthServicePattern = FirebaseAuthServicePatternImpl()
         val task = firebaseAuthServicePattern.resetPassword(email)
         task
             .addOnSuccessListener {
                 _statusResetPassword.value = true
+                _isLoading.value = false
             }
             .addOnFailureListener {
                 _msgFailureSendResetPassword.value = try{
@@ -28,6 +33,7 @@ class ResetPasswordViewModel: ViewModel() {
                 }catch (e: Exception){
                     e
                 }
+                _isLoading.value = false
             }
     }
 }

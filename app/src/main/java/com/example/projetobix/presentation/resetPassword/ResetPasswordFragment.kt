@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentResetPasswordBinding
@@ -61,6 +62,15 @@ class ResetPasswordFragment : Fragment() {
                     alertDialog.show()
                 }
             }
+            isLoading.observe(viewLifecycleOwner){
+                if(it){
+                    binding.loaderResetPasswordAnimation.isVisible = true
+                    binding.loaderResetPasswordAnimation.playAnimation()
+                }else{
+                    binding.loaderResetPasswordAnimation.isVisible = false
+                    binding.loaderResetPasswordAnimation.cancelAnimation()
+                }
+            }
         }
     }
 
@@ -72,6 +82,7 @@ class ResetPasswordFragment : Fragment() {
                 if (!email.isNullOrEmpty() && !confirmedEmail.isNullOrEmpty()) {
                     if (email == confirmedEmail) {
                         viewModel.resetPassword(email)
+                        cleanEditText()
                     } else {
                         cleanEditText()
                         val alertDialog = handlerAlertDialog(
