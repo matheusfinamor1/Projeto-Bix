@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentResetPasswordBinding
+import com.example.projetobix.databinding.LoaderAnimationBinding
 import com.example.projetobix.extensions.handlerAlertDialog
+import com.example.projetobix.extensions.updateLoaderAnimationVisibility
 
 class ResetPasswordFragment : Fragment() {
     private var _binding: FragmentResetPasswordBinding? = null
     private val binding get() = _binding!!
+
+    private var _loaderBinding: LoaderAnimationBinding? = null
+    private val loaderBinding get() = _loaderBinding
 
     private var msgToast: String? = null
 
@@ -23,6 +28,7 @@ class ResetPasswordFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
+        _loaderBinding = LoaderAnimationBinding.bind(binding.includeLoaderAnimation.root)
         return binding.root
     }
 
@@ -61,6 +67,13 @@ class ResetPasswordFragment : Fragment() {
                     alertDialog.show()
                 }
             }
+            isLoading.observe(viewLifecycleOwner){
+                if(it){
+                    loaderBinding?.updateLoaderAnimationVisibility(true)
+                }else{
+                    loaderBinding?.updateLoaderAnimationVisibility(false)
+                }
+            }
         }
     }
 
@@ -72,6 +85,7 @@ class ResetPasswordFragment : Fragment() {
                 if (!email.isNullOrEmpty() && !confirmedEmail.isNullOrEmpty()) {
                     if (email == confirmedEmail) {
                         viewModel.resetPassword(email)
+                        cleanEditText()
                     } else {
                         cleanEditText()
                         val alertDialog = handlerAlertDialog(

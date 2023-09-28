@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentRegisterBinding
+import com.example.projetobix.databinding.LoaderAnimationBinding
 import com.example.projetobix.extensions.handlerAlertDialog
+import com.example.projetobix.extensions.updateLoaderAnimationVisibility
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -26,6 +28,9 @@ class RegisterFragment : Fragment() {
     private var _binding: FragmentRegisterBinding? = null
     private val binding get() = _binding!!
 
+    private var _loaderBinding: LoaderAnimationBinding? = null
+    private val loaderBinding get() = _loaderBinding
+
     private val REQ_ONE_TAP = 2
     private var msgToast: String? = null
     private var showOneTapUI = true
@@ -40,6 +45,7 @@ class RegisterFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentRegisterBinding.inflate(inflater, container, false)
+        _loaderBinding = LoaderAnimationBinding.bind(binding.includeLoaderAnimation.root)
         return binding.root
     }
 
@@ -131,6 +137,13 @@ class RegisterFragment : Fragment() {
                 if (it) {
                     val directions = RegisterFragmentDirections.registerFragmentToHomeFragment()
                     findNavController().navigate(directions)
+                }
+            }
+            isLoading.observe(viewLifecycleOwner){
+                if(it){
+                    loaderBinding?.updateLoaderAnimationVisibility(true)
+                }else{
+                    loaderBinding?.updateLoaderAnimationVisibility(false)
                 }
             }
         }

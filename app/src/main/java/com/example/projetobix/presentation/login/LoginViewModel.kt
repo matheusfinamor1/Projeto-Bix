@@ -28,13 +28,18 @@ class LoginViewModel() : ViewModel() {
     private val _msgFailureGoogleLogin = MutableLiveData<FirebaseException>()
     val msgFailureGoogleLogin: LiveData<FirebaseException> = _msgFailureGoogleLogin
 
+    private val _isLoading = MutableLiveData<Boolean>()
+    val isLoading: LiveData<Boolean> = _isLoading
+
     fun signIn(email: String, password: String) {
+        _isLoading.value = true
         firebaseAuthServicePattern = FirebaseAuthServicePatternImpl()
         val task = firebaseAuthServicePattern.signIn(email, password)
 
         task
             .addOnSuccessListener {
                 _statusEmailAndPassword.value = true
+                _isLoading.value = false
             }
             .addOnFailureListener {
                 _msgFailureEmailAndPasswordLogin.value = try {
@@ -46,15 +51,18 @@ class LoginViewModel() : ViewModel() {
                 }catch (e: FirebaseException){
                     e
                 }
+                _isLoading.value = false
             }
     }
 
     fun signInWithGoogle(credential: AuthCredential){
+        _isLoading.value = true
         firebaseAuthServiceGoogle = FirebaseAuthServiceGoogleImpl()
         val task = firebaseAuthServiceGoogle.signIn(credential)
 
         task
             .addOnSuccessListener {
+                _isLoading.value = true
                 _statusWithGoogleLogin.value = true
             }
             .addOnFailureListener {
@@ -63,6 +71,7 @@ class LoginViewModel() : ViewModel() {
                 }catch (e: FirebaseException){
                     e
                 }
+                _isLoading.value = false
             }
 
     }
