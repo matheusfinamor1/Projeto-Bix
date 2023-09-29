@@ -54,6 +54,7 @@ class LoginFragment : Fragment() {
         viewModel = LoginViewModel()
         observers()
         handlerButtons()
+        verifyLogin()
     }
 
     private fun observers() {
@@ -101,11 +102,17 @@ class LoginFragment : Fragment() {
                     findNavController().navigate(directions)
                 }
             }
-            isLoading.observe(viewLifecycleOwner){
-                if(it){
+            isLoading.observe(viewLifecycleOwner) {
+                if (it) {
                     loaderBinding?.updateLoaderAnimationVisibility(true)
-                }else{
+                } else {
                     loaderBinding?.updateLoaderAnimationVisibility(false)
+                }
+            }
+            isConnected.observe(viewLifecycleOwner) {
+                if (it) {
+                    val directions = LoginFragmentDirections.loginFragmentToHomeFragment()
+                    findNavController().navigate(directions)
                 }
             }
         }
@@ -251,6 +258,11 @@ class LoginFragment : Fragment() {
             }
         }
     }
+
+    private fun verifyLogin() {
+        viewModel.verifyLogin()
+    }
+
     private fun FragmentLoginBinding.cleanEditText() {
         etLoginEmail.let {
             it.text!!.clear()

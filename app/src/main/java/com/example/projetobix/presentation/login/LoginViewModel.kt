@@ -20,7 +20,8 @@ class LoginViewModel() : ViewModel() {
     val statusEmailAndPassword: LiveData<Boolean> = _statusEmailAndPassword
 
     private val _msgFailureEmailAndPasswordLogin = MutableLiveData<FirebaseException>()
-    val msgFailureEmailAndPasswordLogin: LiveData<FirebaseException> = _msgFailureEmailAndPasswordLogin
+    val msgFailureEmailAndPasswordLogin: LiveData<FirebaseException> =
+        _msgFailureEmailAndPasswordLogin
 
     private val _statusWithGoogleLogin = MutableLiveData<Boolean>()
     val statusWithGoogleLogin: LiveData<Boolean> = _statusWithGoogleLogin
@@ -30,6 +31,9 @@ class LoginViewModel() : ViewModel() {
 
     private val _isLoading = MutableLiveData<Boolean>()
     val isLoading: LiveData<Boolean> = _isLoading
+
+    private val _isConnected = MutableLiveData<Boolean>()
+    val isConnected: LiveData<Boolean> = _isConnected
 
     fun signIn(email: String, password: String) {
         _isLoading.value = true
@@ -48,14 +52,14 @@ class LoginViewModel() : ViewModel() {
                     e
                 } catch (e: FirebaseAuthInvalidCredentialsException) {
                     e
-                }catch (e: FirebaseException){
+                } catch (e: FirebaseException) {
                     e
                 }
                 _isLoading.value = false
             }
     }
 
-    fun signInWithGoogle(credential: AuthCredential){
+    fun signInWithGoogle(credential: AuthCredential) {
         _isLoading.value = true
         firebaseAuthServiceGoogle = FirebaseAuthServiceGoogleImpl()
         val task = firebaseAuthServiceGoogle.signIn(credential)
@@ -66,13 +70,20 @@ class LoginViewModel() : ViewModel() {
                 _statusWithGoogleLogin.value = true
             }
             .addOnFailureListener {
-                _msgFailureGoogleLogin.value = try{
+                _msgFailureGoogleLogin.value = try {
                     throw task.exception!!
-                }catch (e: FirebaseException){
+                } catch (e: FirebaseException) {
                     e
                 }
                 _isLoading.value = false
             }
 
+    }
+
+    fun verifyLogin() {
+        firebaseAuthServicePattern = FirebaseAuthServicePatternImpl()
+        val user = firebaseAuthServicePattern.getUser()
+
+        _isConnected.value = user != null
     }
 }

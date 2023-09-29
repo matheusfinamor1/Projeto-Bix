@@ -30,13 +30,12 @@ class HomeFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.rvPostList.bind()
     }
+    private fun RecyclerView.bind(){
+        adapter = homeAdapter
+    }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun RecyclerView.bind(){
-        adapter = homeAdapter
     }
 }
