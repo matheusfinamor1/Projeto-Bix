@@ -139,10 +139,10 @@ class RegisterFragment : Fragment() {
                     findNavController().navigate(directions)
                 }
             }
-            isLoading.observe(viewLifecycleOwner){
-                if(it){
+            isLoading.observe(viewLifecycleOwner) {
+                if (it) {
                     loaderBinding?.updateLoaderAnimationVisibility(true)
-                }else{
+                } else {
                     loaderBinding?.updateLoaderAnimationVisibility(false)
                 }
             }
@@ -255,6 +255,7 @@ class RegisterFragment : Fragment() {
             }
         }
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         handleResultOneTap(requestCode, data)
@@ -265,5 +266,4 @@ class RegisterFragment : Fragment() {
         super.onDestroy()
         _binding = null
     }
-
 }

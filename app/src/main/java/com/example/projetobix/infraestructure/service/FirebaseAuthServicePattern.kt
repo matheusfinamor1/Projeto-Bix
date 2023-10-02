@@ -9,7 +9,7 @@ interface FirebaseAuthServicePattern {
 
     fun createUserWithEmailAndPassword(email: String, password: String): Task<AuthResult>
 
-    fun getUser(): FirebaseUser
+    fun getUser(): FirebaseUser?
 
     fun signOut()
 
