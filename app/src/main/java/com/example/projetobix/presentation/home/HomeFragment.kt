@@ -18,7 +18,6 @@ class HomeFragment : Fragment() {
 
     private val homeAdapter = HomeAdapter(posts = post)
 
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -31,10 +30,16 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvPostList.bind()
+        handlerScrollForBottomNavigation()
+
+        handlerHomeBottomNavigation()
+    }
+
+    private fun handlerHomeBottomNavigation() {
         binding.navigationBarHome.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
                 R.id.item_1 -> {
-                    Log.d("Response", "onViewCreated: Vai para perfil")
+                    Log.d("Response", "onViewCreated: Vai para feed")
                     true
                 }
 
@@ -42,9 +47,28 @@ class HomeFragment : Fragment() {
                     Log.d("Response", "onViewCreated: Vai para favoritos")
                     true
                 }
-                else-> false
+
+                else -> false
             }
         }
+    }
+
+    private fun handlerScrollForBottomNavigation() {
+        binding.rvPostList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                val maxScrollY =
+                    binding.rvPostList.computeVerticalScrollRange() - binding.rvPostList.height
+                val percentage =
+                    binding.rvPostList.computeVerticalScrollOffset().toFloat() / maxScrollY
+                setBottomNavigationViewAlpha(percentage)
+            }
+        })
+    }
+
+    private fun setBottomNavigationViewAlpha(percentage: Float) {
+        val alpha = 1 - percentage
+        binding.navigationBarHome.bottomNavigation.alpha = alpha.coerceAtLeast(0.5f)
     }
 
     private fun RecyclerView.bind() {

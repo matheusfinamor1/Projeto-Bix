@@ -52,6 +52,8 @@
     <string name="text_button_google">Fazer login com o Google</string>
     <string name="title_success">Sucesso</string>
     <string name="message_account_create_success">Conta criada com sucesso!</string>
+    <string name="title_feed">Feed</string>
+    <string name="title_liked">Gostei</string>
 
 
 </resources>
