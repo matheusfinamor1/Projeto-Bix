@@ -40,7 +40,7 @@ class HomeFragment : Fragment() {
     private fun handlerHomeBottomNavigation() {
         binding.navigationBarHome.bottomNavigation.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.item_1 -> {
+                R.id.homeFragment -> {
                     Log.d("Response", "onViewCreated: Vai para feed")
                     true
                 }
