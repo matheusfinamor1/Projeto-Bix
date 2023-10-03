@@ -27,13 +27,13 @@ que remetem a uma boa interação com o usuário final.
 <img src="assets/register.gif" width="400" height="700">
 
 ### Login através de email/senha - Firebase
-<img src="assets/Screen_recording_20230926_223431.gif" width="400" height="700">
+<img src="assets/loginEmail.gif" width="400" height="700">
 
 ### Recuperação de senha (através de envio de e-mail) - Firebase
-<img src="assets/reset.gif" width="400" height="700">
+<img src="assets/resetPassword.gif" width="400" height="700">
 
 ### Login através do Google One Tap - Firebase
-<img src="assets/onetap.gif" width="400" height="700">
+<img src="assets/loginGoogle.gif" width="400" height="700">
 
 # Acesso ao projeto
 Para acessar o projeto, vá para a branch [*main*](https://github.com/matheusfinamor1/Projeto-Bix/tree/main), onde se encontra a versão estável e atualizada do projeto.
@@ -59,6 +59,7 @@ Para realizar o download do projeto, clique em **Code**(no link de acesso ao pro
 - `Firebase`
 - `POO`
 - `Jetpack Compose`
+- `Lottie`
 - `Design Patterns`
 - `Clean Architecture`
 
