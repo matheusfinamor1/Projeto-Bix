@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Projeto Bix"
 include(":app")
- 
+include(":benchmark")
