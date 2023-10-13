@@ -61,8 +61,12 @@ class HomeFragment : Fragment() {
         val totalItemCount = layoutManager.itemCount
         val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
 
-        binding.loadedData.isVisible =
-            visibleItemCount + firstVisibleItemPosition >= totalItemCount && totalItemCount > 0
+        if (visibleItemCount + firstVisibleItemPosition >= totalItemCount && totalItemCount > 0) {
+            binding.loaderAnimationFinishList.layoutParams.width = 200
+            binding.loaderAnimationFinishList.layoutParams.height = 200
+            binding.loaderAnimationFinishList.isVisible = true
+
+        } else binding.loaderAnimationFinishList.isVisible = false
     }
 
     private fun RecyclerView.bind() {
@@ -76,9 +80,9 @@ class HomeFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is MainActivityListener){
+        if (context is MainActivityListener) {
             mainActivityListener = context
-        }else{
+        } else {
             throw RuntimeException("$context must implement MainActivityListener")
         }
     }
