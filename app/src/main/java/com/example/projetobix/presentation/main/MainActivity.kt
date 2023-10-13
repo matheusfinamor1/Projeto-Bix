@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
             finish()
         }
     }
+
     private fun defineVisibilityBottomNavigation(navController: NavController) {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
@@ -54,7 +55,13 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
                     handlerVisibilityBottomNavigation(false)
                 }
 
-                else -> {
+                R.id.favoriteFragment -> {
+                    setBottomNavigationViewAlpha(0f)
+                    handlerVisibilityBottomNavigation(true)
+                }
+
+                R.id.homeFragment -> {
+                    setBottomNavigationViewAlpha(0f)
                     handlerVisibilityBottomNavigation(true)
                 }
             }
