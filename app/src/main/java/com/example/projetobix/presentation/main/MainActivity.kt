@@ -1,6 +1,9 @@
 package com.example.projetobix.presentation.main
 
 import android.os.Bundle
+import android.view.MenuItem
+import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.navigation.NavController
@@ -11,19 +14,62 @@ import com.example.projetobix.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity(), MainActivityListener {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+
+    private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val navController = findNavController(R.id.nav_host_fragment)
-        setupWithNavController(binding.navigationBarMain.bottomNavigation, navController)
+        val navController = setupNavigationBar()
+        setupNavigationDrawer()
 
         defineVisibilityBottomNavigation(navController)
+    }
+
+    private fun setupNavigationDrawer() {
+        toggle = ActionBarDrawerToggle(
+            this,
+            binding.drawerLayout,
+            R.string.title_open,
+            R.string.title_close
+        )
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        binding.navView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.drawer_config -> {
+                    Toast.makeText(applicationContext, "Config click", Toast.LENGTH_LONG).show()
+                }
+
+                R.id.drawer_logout -> {
+                    Toast.makeText(applicationContext, "Logout click", Toast.LENGTH_LONG).show()
+                }
+            }
+            true
+        }
+    }
+
+    private fun setupNavigationBar(): NavController {
+        val navController = findNavController(R.id.nav_host_fragment)
+        setupWithNavController(binding.navigationBarMain.bottomNavigation, navController)
+        return navController
     }
 
     override fun setBottomNavigationViewAlpha(percentage: Float) {
         val alpha = 1 - percentage
         binding.navigationBarMain.bottomNavigation.alpha = alpha.coerceAtLeast(0.5f)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (toggle.onOptionsItemSelected(item)) {
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
+
     }
 
     override fun onBackPressed() {
