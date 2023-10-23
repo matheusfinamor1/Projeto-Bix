@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item
-        android:id="@+id/main_item"
-        android:title="Perfil">
-        <menu>
-            <item
-                android:id="@+id/drawer_config"
-                android:checkable="true"
-                android:icon="@drawable/ic_config"
-                android:title="Configurações" />
-            <item
-                android:id="@+id/drawer_logout"
-                android:checkable="true"
-                android:icon="@drawable/ic_logout"
-                android:title="Sair" />
-        </menu>
-    </item>
+    <group>
+        <item
+            android:id="@+id/config_item"
+            android:title="@string/title_drawer_config">
+            <menu>
+                <item
+                    android:id="@+id/nav_subitem1"
+                    android:icon="@drawable/ic_email"
+                    android:title="@string/title_drawer_email" />
+                <item
+                    android:id="@+id/nav_subitem2"
+                    android:icon="@drawable/ic_password"
+                    android:title="@string/title_drawer_password" />
+            </menu>
+        </item>
+    </group>
 
+    <item
+        android:id="@+id/logout_item"
+        android:icon="@drawable/ic_logout"
+        android:title="@string/title_drawer_logout">
+    </item>
 </menu>
