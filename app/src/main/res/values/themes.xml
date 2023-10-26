@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ProjetoBix" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.ProjetoBix" parent="Theme.Material3.DayNight">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="MyTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="MyTheme" parent="Theme.Material3.Light">
 
         <item name="colorPrimary">@color/blue_t</item>
         <item name="colorPrimaryDark">@color/black_t</item>
@@ -16,6 +16,10 @@
     <style name="roundedImageViewRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="DrawerLayoutTheme" parent="Theme.Material3.DayNight">
+        <item name="android:windowTranslucentStatus">true</item>
     </style>
 
 

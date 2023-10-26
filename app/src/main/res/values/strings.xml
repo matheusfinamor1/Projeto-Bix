@@ -55,5 +55,12 @@
     <string name="title_feed">Feed</string>
     <string name="title_liked">Gostei</string>
 
+    <string name="title_open">Abrir</string>
+    <string name="title_close">Fechar</string>
+    <string name="title_drawer_config">Configurações</string>
+    <string name="title_drawer_email">Alterar email</string>
+    <string name="title_drawer_password">Alterar senha</string>
+    <string name="title_drawer_logout">Sair</string>
+
 
 </resources>
