@@ -2,7 +2,6 @@ package com.example.projetobix.presentation.main
 
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -56,22 +55,22 @@ class MainActivity : AppCompatActivity(), MainActivityListener {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        binding.navView.setNavigationItemSelectedListener {
-            when (it.itemId) {
-                R.id.nav_subitem1 -> {
-                    Toast.makeText(applicationContext, "subitem1 click", Toast.LENGTH_LONG).show()
-                }
-
-                R.id.nav_subitem2 -> {
-                    Toast.makeText(applicationContext, "subitem2 click", Toast.LENGTH_LONG).show()
-                }
-
-                R.id.logout_item -> {
-                    viewModel.logout()
-                }
-            }
-            true
-        }
+//        binding.navView.setNavigationItemSelectedListener {
+//            when (it.itemId) {
+//                R.id.nav_subitem1 -> {
+//                    Toast.makeText(applicationContext, "subitem1 click", Toast.LENGTH_LONG).show()
+//                }
+//
+//                R.id.nav_subitem2 -> {
+//                    Toast.makeText(applicationContext, "subitem2 click", Toast.LENGTH_LONG).show()
+//                }
+//
+//                R.id.logout_item -> {
+//                    viewModel.logout()
+//                }
+//            }
+//            true
+//        }
     }
 
     private fun setupNavigationBar(): NavController {
