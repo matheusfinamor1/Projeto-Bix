@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.constraintlayout.widget.ConstraintLayout.LayoutParams
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +12,7 @@ import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentHomeBinding
 import com.example.projetobix.mock.post
 import com.example.projetobix.presentation.base.BaseFragmentWithBottomNav
-import com.example.projetobix.presentation.main.BottomNavigationViewAlphaListener
+import com.example.projetobix.presentation.base.BottomNavigationViewAlphaListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
@@ -40,12 +39,6 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-//        val recyclerView = binding.rvPostList
-//        val appBarLayout = binding.appBarLayout
-//        val params = recyclerView.layoutParams as LayoutParams
-//        params.topToBottom = appBarLayout.id
-//        recyclerView.layoutParams = params
-
 
         bottomNavView = binding.bottomNav.bottomNavigationView
         binding.rvPostList.bind()

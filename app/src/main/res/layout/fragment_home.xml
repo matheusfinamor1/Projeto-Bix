@@ -13,7 +13,7 @@
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_scrollFlags="scroll|enterAlways">
+            app:layout_scrollFlags="scroll|enterAlways|enterAlwaysCollapsed">
 
             <androidx.appcompat.widget.Toolbar
                 android:layout_width="match_parent"
@@ -58,6 +58,7 @@
         android:id="@+id/rv_post_list"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingBottom="?attr/actionBarSize"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         tools:listitem="@layout/item_post" />
@@ -73,6 +74,8 @@
         android:layout_marginBottom="60dp"
         android:scaleType="centerCrop"
         android:visibility="gone"
+        app:layout_anchor="@id/rv_post_list"
+        app:layout_anchorGravity="center|bottom"
         app:layout_behavior="@string/appbar_scrolling_view_behavior"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
