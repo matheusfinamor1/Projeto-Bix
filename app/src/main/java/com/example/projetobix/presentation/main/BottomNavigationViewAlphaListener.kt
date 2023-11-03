@@ -1,5 +1,5 @@
 package com.example.projetobix.presentation.main
 
-interface MainActivityListener {
+interface BottomNavigationViewAlphaListener {
     fun setBottomNavigationViewAlpha(percentage: Float)
 }
