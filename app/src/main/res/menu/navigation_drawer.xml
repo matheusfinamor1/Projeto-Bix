@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <group>
         <item
             android:id="@+id/config_item"
+            app:showAsAction="ifRoom"
+            android:icon="@drawable/ic_config"
             android:title="@string/title_drawer_config">
             <menu>
                 <item
@@ -15,11 +18,13 @@
                     android:title="@string/title_drawer_password" />
             </menu>
         </item>
+
     </group>
 
     <item
-        android:id="@+id/logout_item"
+        android:id="@+id/logout"
+        android:title="Sair"
         android:icon="@drawable/ic_logout"
-        android:title="@string/title_drawer_logout">
-    </item>
+        app:showAsAction="ifRoom"/>
+
 </menu>

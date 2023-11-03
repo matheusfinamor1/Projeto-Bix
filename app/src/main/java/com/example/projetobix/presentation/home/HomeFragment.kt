@@ -1,24 +1,30 @@
 package com.example.projetobix.presentation.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.projetobix.R
 import com.example.projetobix.databinding.FragmentHomeBinding
 import com.example.projetobix.mock.post
-import com.example.projetobix.presentation.main.MainActivityListener
+import com.example.projetobix.presentation.base.BaseFragmentWithBottomNav
+import com.example.projetobix.presentation.base.BottomNavigationViewAlphaListener
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
-class HomeFragment : Fragment() {
-
+class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
+    BottomNavigationViewAlphaListener {
     private var _binding: FragmentHomeBinding? = null
-    private val binding get() = _binding!!
-
-    private var mainActivityListener: MainActivityListener? = null
+    override val binding: FragmentHomeBinding
+        get() {
+            return _binding ?: throw IllegalStateException("Binding is not initialized")
+        }
+    private lateinit var bottomNavView: BottomNavigationView
+    override val menuResID: Int
+        get() = R.menu.bottom_navigation_menu
 
     private val homeAdapter = HomeAdapter(posts = post)
 
@@ -33,9 +39,32 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        bottomNavView = binding.bottomNav.bottomNavigationView
         binding.rvPostList.bind()
+        setupDestinationNavigationBar()
         handlerScrollForBottomNavigation()
     }
+
+
+    private fun setupDestinationNavigationBar() {
+        bottomNavView.setOnItemSelectedListener {
+            when (it.itemId) {
+                R.id.favoriteFragment -> {
+                    Toast.makeText(requireContext(), "Favorite click", Toast.LENGTH_LONG).show()
+                    true
+                }
+
+                R.id.homeFragment -> {
+                    Toast.makeText(requireContext(), "Home click", Toast.LENGTH_LONG).show()
+                    true
+                }
+
+                else -> false
+            }
+        }
+    }
+
 
     private fun handlerScrollForBottomNavigation() {
         binding.rvPostList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -52,7 +81,7 @@ class HomeFragment : Fragment() {
             binding.rvPostList.computeVerticalScrollRange() - binding.rvPostList.height
         val percentage =
             binding.rvPostList.computeVerticalScrollOffset().toFloat() / maxScrollY
-        mainActivityListener?.setBottomNavigationViewAlpha(percentage)
+        setBottomNavigationViewAlpha(percentage)
     }
 
     private fun verifyLastItemRecyclerView() {
@@ -78,12 +107,8 @@ class HomeFragment : Fragment() {
         _binding = null
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is MainActivityListener) {
-            mainActivityListener = context
-        } else {
-            throw RuntimeException("$context must implement MainActivityListener")
-        }
+    override fun setBottomNavigationViewAlpha(percentage: Float) {
+        val alpha = 1 - percentage
+        bottomNavView.alpha = alpha.coerceAtLeast(0.5f)
     }
 }
