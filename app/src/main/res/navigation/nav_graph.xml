@@ -9,7 +9,11 @@
         android:id="@+id/homeFragment"
         android:name="com.example.projetobix.presentation.home.HomeFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"/>
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/homeFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.projetobix.presentation.login.LoginFragment"

@@ -1,4 +1,4 @@
-package com.example.projetobix.presentation.main
+package com.example.projetobix.presentation.home
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.example.projetobix.infraestructure.service.FirebaseAuthServicePattern
 import com.example.projetobix.infraestructure.service.impl.FirebaseAuthServicePatternImpl
 
-class MainViewModel : ViewModel() {
+class HomeViewModel : ViewModel() {
     private lateinit var firebaseAuthServicePattern: FirebaseAuthServicePattern
 
     private val _isLogout = MutableLiveData<Boolean>()
@@ -19,7 +19,5 @@ class MainViewModel : ViewModel() {
             firebaseAuthServicePattern = FirebaseAuthServicePatternImpl()
             firebaseAuthServicePattern.signOut()
         } else _isLogout.value = false
-
-
     }
 }

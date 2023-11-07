@@ -9,11 +9,11 @@
             android:title="@string/title_drawer_config">
             <menu>
                 <item
-                    android:id="@+id/nav_subitem1"
+                    android:id="@+id/nav_alt_email"
                     android:icon="@drawable/ic_email"
                     android:title="@string/title_drawer_email" />
                 <item
-                    android:id="@+id/nav_subitem2"
+                    android:id="@+id/nav_alt_pass"
                     android:icon="@drawable/ic_password"
                     android:title="@string/title_drawer_password" />
             </menu>
@@ -22,8 +22,8 @@
     </group>
 
     <item
-        android:id="@+id/logout"
-        android:title="Sair"
+        android:id="@+id/nav_logout"
+        android:title="@string/title_drawer_logout"
         android:icon="@drawable/ic_logout"
         app:showAsAction="ifRoom"/>
 

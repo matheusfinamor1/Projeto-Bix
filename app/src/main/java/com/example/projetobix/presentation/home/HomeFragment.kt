@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
+import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.projetobix.R
@@ -17,16 +19,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
     BottomNavigationViewAlphaListener {
+
     private var _binding: FragmentHomeBinding? = null
     override val binding: FragmentHomeBinding
         get() {
-            return _binding ?: throw IllegalStateException("Binding is not initialized")
+            return _binding ?: throw IllegalStateException(NOT_BINDING)
         }
-    private lateinit var bottomNavView: BottomNavigationView
+
     override val menuResID: Int
         get() = R.menu.bottom_navigation_menu
 
+    private val viewModel: HomeViewModel by viewModels()
     private val homeAdapter = HomeAdapter(posts = post)
+
+    private lateinit var bottomNavView: BottomNavigationView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,12 +45,47 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         bottomNavView = binding.bottomNav.bottomNavigationView
         binding.rvPostList.bind()
+        observers()
         setupDestinationNavigationBar()
+        setupNavDrawer()
         handlerScrollForBottomNavigation()
         setupOpenDrawer()
+    }
+
+    private fun observers() {
+        viewModel.apply {
+            isLogout.observe(viewLifecycleOwner) {
+                if (it) {
+                    val directions = HomeFragmentDirections.homeFragmentToLoginFragment()
+                    findNavController().navigate(directions)
+                }
+            }
+        }
+    }
+
+    private fun setupNavDrawer() {
+        binding.navHome.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.nav_alt_email -> {
+                    Toast.makeText(context, "Alterar email click", Toast.LENGTH_LONG).show()
+                    true
+                }
+
+                R.id.nav_alt_pass -> {
+                    Toast.makeText(context, "Alterar password click", Toast.LENGTH_LONG).show()
+                    true
+                }
+
+                R.id.nav_logout -> {
+                    viewModel.logout()
+                    true
+                }
+
+                else -> false
+            }
+        }
     }
 
     private fun setupOpenDrawer() {
@@ -118,5 +159,9 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
     override fun setBottomNavigationViewAlpha(percentage: Float) {
         val alpha = 1 - percentage
         bottomNavView.alpha = alpha.coerceAtLeast(0.5f)
+    }
+
+    companion object {
+        private const val NOT_BINDING = "Binding is not initialized"
     }
 }
