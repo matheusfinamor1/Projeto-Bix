@@ -1,15 +1,9 @@
 package com.example.projetobix.presentation.main
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.activity.viewModels
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.isVisible
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.projetobix.R
 import com.example.projetobix.databinding.ActivityMainBinding
 
@@ -17,16 +11,10 @@ class MainActivity : AppCompatActivity() {
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private val viewModel: MainViewModel by viewModels()
 
-    //private lateinit var toggle: ActionBarDrawerToggle
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         observers()
-
-//        val navController = setupNavigationBar()
-//        setupNavigationDrawer()
-//
-//        defineVisibilityBottomNavigation(navController)
     }
 
 
@@ -72,20 +60,4 @@ class MainActivity : AppCompatActivity() {
 //            true
 //        }
     }
-
-
-    override fun onBackPressed() {
-        //handlerBackPressedBottomNavigation()
-        super.onBackPressed()
-    }
-
-//    private fun handlerBackPressedBottomNavigation() {
-//        val navController = findNavController(R.id.nav_host_fragment)
-//        if (navController.currentDestination?.id == R.id.homeFragment ||
-//            navController.currentDestination?.id == R.id.favoriteFragment
-//        ) {
-//            finish()
-//        }
-//    }
-
 }
