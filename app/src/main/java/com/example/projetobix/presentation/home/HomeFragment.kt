@@ -44,6 +44,14 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
         binding.rvPostList.bind()
         setupDestinationNavigationBar()
         handlerScrollForBottomNavigation()
+        setupOpenDrawer()
+    }
+
+    private fun setupOpenDrawer() {
+        binding.toolbarHome.setNavigationIcon(R.drawable.ic_menu)
+        binding.toolbarHome.setNavigationOnClickListener {
+            binding.drawerLayoutHome.openDrawer(binding.navHome)
+        }
     }
 
 
