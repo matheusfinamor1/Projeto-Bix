@@ -6,11 +6,11 @@ import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 
-class FirebaseAuthServicePatternImpl: FirebaseAuthServicePattern {
+class FirebaseAuthServicePatternImpl : FirebaseAuthServicePattern {
 
     private val firebaseAuth = FirebaseAuth.getInstance()
     override fun signIn(email: String, password: String): Task<AuthResult> {
-        return firebaseAuth.signInWithEmailAndPassword(email,password)
+        return firebaseAuth.signInWithEmailAndPassword(email, password)
     }
 
     override fun createUserWithEmailAndPassword(email: String, password: String): Task<AuthResult> {
@@ -25,7 +25,7 @@ class FirebaseAuthServicePatternImpl: FirebaseAuthServicePattern {
         firebaseAuth.signOut()
     }
 
-    override fun resetPassword(email: String): Task<Void> {
+    override fun recoverPassword(email: String): Task<Void> {
         return firebaseAuth.sendPasswordResetEmail(email)
     }
 }

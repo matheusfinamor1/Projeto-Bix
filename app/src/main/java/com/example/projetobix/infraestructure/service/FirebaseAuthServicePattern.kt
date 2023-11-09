@@ -13,5 +13,5 @@ interface FirebaseAuthServicePattern {
 
     fun signOut()
 
-    fun resetPassword(email: String): Task<Void>
+    fun recoverPassword(email: String): Task<Void>
 }

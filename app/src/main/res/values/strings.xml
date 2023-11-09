@@ -61,6 +61,14 @@
     <string name="title_drawer_email">Alterar email</string>
     <string name="title_drawer_password">Alterar senha</string>
     <string name="title_drawer_logout">Sair</string>
+    <string name="text_current_password">Senha atual</string>
+    <string name="text_new_password">Nova senha</string>
+    <string name="text_confirm_new_password">Confirmar senha</string>
+    <string name="text_button_update_password">Atualizar senha</string>
+    <string name="title_repl_password">Alterar a senha</string>
+    <string name="text_repl_password">Você deseja mesmo alterar a senha? Caso deseje, clique no botão <font color="#000000">confirmar</font>, para que seja enviado para seu email cadastrado, uma mensagem disponibilizando a troca da senha.</string>
+    <string name="text_btn_conf">Confirmar</string>
+    <string name="text_btn_canc">Cancelar</string>
 
 
 </resources>

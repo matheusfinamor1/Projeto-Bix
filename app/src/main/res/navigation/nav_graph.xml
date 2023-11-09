@@ -44,9 +44,9 @@
     </fragment>
     <fragment
         android:id="@+id/resetPasswordFragment"
-        android:name="com.example.projetobix.presentation.resetPassword.ResetPasswordFragment"
+        android:name="com.example.projetobix.presentation.recoverPassword.RecoverPasswordFragment"
         android:label="ResetPasswordFragment"
-        tools:layout="@layout/fragment_reset_password"/>
+        tools:layout="@layout/fragment_to_recover_password"/>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.example.projetobix.presentation.favorite.FavoriteFragment"

@@ -15,6 +15,7 @@ import com.example.projetobix.databinding.FragmentHomeBinding
 import com.example.projetobix.mock.post
 import com.example.projetobix.presentation.base.BaseFragmentWithBottomNav
 import com.example.projetobix.presentation.base.BottomNavigationViewAlphaListener
+import com.example.projetobix.presentation.dialog.ModifyPasswordBottomSheetDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
@@ -33,6 +34,7 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
     private val homeAdapter = HomeAdapter(posts = post)
 
     private lateinit var bottomNavView: BottomNavigationView
+    private lateinit var dialog: ModifyPasswordBottomSheetDialogFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,7 +76,8 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
                 }
 
                 R.id.nav_alt_pass -> {
-                    Toast.makeText(context, "Alterar password click", Toast.LENGTH_LONG).show()
+                    dialog = ModifyPasswordBottomSheetDialogFragment()
+                    dialog.show(this.parentFragmentManager, dialog.tag)
                     true
                 }
 
