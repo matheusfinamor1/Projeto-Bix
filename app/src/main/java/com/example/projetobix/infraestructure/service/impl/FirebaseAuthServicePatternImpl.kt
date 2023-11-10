@@ -28,4 +28,8 @@ class FirebaseAuthServicePatternImpl : FirebaseAuthServicePattern {
     override fun recoverPassword(email: String): Task<Void> {
         return firebaseAuth.sendPasswordResetEmail(email)
     }
+
+    override fun getEmail(): String {
+        return firebaseAuth.currentUser?.email!!
+    }
 }

@@ -42,7 +42,7 @@
 
     <string name="message_failure_reset_password">Houve uma falha ao redefinir sua senha, tente novamente mais tarde!</string>
     <string name="message_failure_reset_password_generic">Houve uma falha, tente novamente mais tarde!</string>
-    <string name="message_email_send">Verifique sua caixa de e-mail.</string>
+    <string name="message_email_send">Verifique sua caixa de e-mail, caso não encontre o e-mail lá, verifique o seu <font color="#000000">lixo eletrônico</font>.</string>
     <string name="message_email_different">Os e-mails digitados não são iguais. Por favor, digite o mesmo e-mail para que se consiga fazer a confirmação do mesmo.</string>
     <string name="message_empty_fields">Preencha todos os campos para que se consiga ser feita a recuperação da senha.</string>
 
