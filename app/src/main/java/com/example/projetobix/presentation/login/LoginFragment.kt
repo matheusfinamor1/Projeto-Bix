@@ -29,7 +29,7 @@ class LoginFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var _loaderBinding: LoaderAnimationBinding? = null
-    private val loaderBinding get() = _loaderBinding
+    private val loaderBinding get() = _loaderBinding!!
 
     private var msgToast: String? = null
     private var showOneTapUI = true
@@ -104,9 +104,9 @@ class LoginFragment : Fragment() {
             }
             isLoading.observe(viewLifecycleOwner) {
                 if (it) {
-                    loaderBinding?.updateLoaderAnimationVisibility(true)
+                    loaderBinding.updateLoaderAnimationVisibility(true)
                 } else {
-                    loaderBinding?.updateLoaderAnimationVisibility(false)
+                    loaderBinding.updateLoaderAnimationVisibility(false)
                 }
             }
             isConnected.observe(viewLifecycleOwner) {
@@ -281,5 +281,6 @@ class LoginFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        _loaderBinding = null
     }
 }

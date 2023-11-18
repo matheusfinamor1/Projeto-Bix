@@ -1,4 +1,4 @@
-package com.example.projetobix.presentation.resetPassword
+package com.example.projetobix.presentation.recoverPassword
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,13 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.projetobix.R
-import com.example.projetobix.databinding.FragmentResetPasswordBinding
+import com.example.projetobix.databinding.FragmentToRecoverPasswordBinding
 import com.example.projetobix.databinding.LoaderAnimationBinding
 import com.example.projetobix.extensions.handlerAlertDialog
 import com.example.projetobix.extensions.updateLoaderAnimationVisibility
 
-class ResetPasswordFragment : Fragment() {
-    private var _binding: FragmentResetPasswordBinding? = null
+class RecoverPasswordFragment : Fragment() {
+    private var _binding: FragmentToRecoverPasswordBinding? = null
     private val binding get() = _binding!!
 
     private var _loaderBinding: LoaderAnimationBinding? = null
@@ -20,31 +20,31 @@ class ResetPasswordFragment : Fragment() {
 
     private var msgToast: String? = null
 
-    private lateinit var viewModel: ResetPasswordViewModel
+    private lateinit var viewModel: RecoverPasswordViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentResetPasswordBinding.inflate(inflater, container, false)
+        _binding = FragmentToRecoverPasswordBinding.inflate(inflater, container, false)
         _loaderBinding = LoaderAnimationBinding.bind(binding.includeLoaderAnimation.root)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel = ResetPasswordViewModel()
+        viewModel = RecoverPasswordViewModel()
         observers()
         handlerButtons()
     }
 
     private fun observers() {
         viewModel.apply {
-            msgFailureSendResetPassword.observe(viewLifecycleOwner) {
+            msgFailureSendRecoverPassword.observe(viewLifecycleOwner) {
                 msgToast = when (it) {
                     is Exception -> getString(R.string.message_failure_reset_password)
-                    else -> getString(R.string.message_failure_reset_password_generic)
+                    else -> getString(R.string.message_failure_generic)
                 }
                 val alertDialog = handlerAlertDialog(
                     requireContext(),
@@ -55,7 +55,7 @@ class ResetPasswordFragment : Fragment() {
                 )
                 alertDialog.show()
             }
-            statusResetPassword.observe(viewLifecycleOwner) {
+            statusRecoverPassword.observe(viewLifecycleOwner) {
                 if (it) {
                     val alertDialog = handlerAlertDialog(
                         requireContext(),
@@ -67,10 +67,10 @@ class ResetPasswordFragment : Fragment() {
                     alertDialog.show()
                 }
             }
-            isLoading.observe(viewLifecycleOwner){
-                if(it){
+            isLoading.observe(viewLifecycleOwner) {
+                if (it) {
                     loaderBinding?.updateLoaderAnimationVisibility(true)
-                }else{
+                } else {
                     loaderBinding?.updateLoaderAnimationVisibility(false)
                 }
             }
@@ -80,11 +80,11 @@ class ResetPasswordFragment : Fragment() {
     private fun handlerButtons() {
         binding.apply {
             btnRecoverPassword.setOnClickListener {
-                val email = etResetEmail.text.toString()
-                val confirmedEmail = etResetConfirmedEmail.text.toString()
+                val email = etRecoverEmail.text.toString()
+                val confirmedEmail = etRecoverConfirmedEmail.text.toString()
                 if (!email.isNullOrEmpty() && !confirmedEmail.isNullOrEmpty()) {
                     if (email == confirmedEmail) {
-                        viewModel.resetPassword(email)
+                        viewModel.recoverPassword(email)
                         cleanEditText()
                     } else {
                         cleanEditText()
@@ -113,11 +113,11 @@ class ResetPasswordFragment : Fragment() {
         }
     }
 
-    private fun FragmentResetPasswordBinding.cleanEditText() {
-        etResetEmail.let {
+    private fun FragmentToRecoverPasswordBinding.cleanEditText() {
+        etRecoverEmail.let {
             it.text!!.clear()
         }
-        etResetConfirmedEmail.let {
+        etRecoverConfirmedEmail.let {
             it.text!!.clear()
         }
     }
