@@ -1,4 +1,4 @@
-package com.example.projetobix.presentation.dialog
+package com.example.projetobix.presentation.dialog.modifyPassword
 
 import android.app.Dialog
 import android.os.Bundle
@@ -18,7 +18,7 @@ class ModifyPasswordBottomSheetDialogFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     private var _loaderBinding: LoaderAnimationBinding? = null
-    private val loaderBinding get() = _loaderBinding
+    private val loaderBinding get() = _loaderBinding!!
 
     private val viewModel: ModifyPasswordBottomSheetDialogViewModel by viewModels()
 
@@ -62,7 +62,7 @@ class ModifyPasswordBottomSheetDialogFragment : BottomSheetDialogFragment() {
             msgFailureSendEmailModifyPassword.observe(viewLifecycleOwner) {
                 msgToast = when (it) {
                     is Exception -> getString(R.string.message_failure_reset_password)
-                    else -> getString(R.string.message_failure_reset_password_generic)
+                    else -> getString(R.string.message_failure_generic)
                 }
                 val alertDialog = handlerAlertDialog(
                     requireContext(),
@@ -87,9 +87,9 @@ class ModifyPasswordBottomSheetDialogFragment : BottomSheetDialogFragment() {
             }
             isLoading.observe(viewLifecycleOwner) {
                 if (it) {
-                    loaderBinding?.updateLoaderAnimationVisibility(true)
+                    loaderBinding.updateLoaderAnimationVisibility(true)
                 } else {
-                    loaderBinding?.updateLoaderAnimationVisibility(false)
+                    loaderBinding.updateLoaderAnimationVisibility(false)
                     dialog?.dismiss()
                 }
             }
@@ -100,5 +100,6 @@ class ModifyPasswordBottomSheetDialogFragment : BottomSheetDialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+        _loaderBinding = null
     }
 }

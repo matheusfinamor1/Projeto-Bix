@@ -1,4 +1,4 @@
-package com.example.projetobix.presentation.dialog
+package com.example.projetobix.presentation.dialog.modifyPassword
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

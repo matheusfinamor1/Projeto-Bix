@@ -13,6 +13,9 @@
         <action
             android:id="@+id/homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/homeFragment_to_modifyEmailFragment"
+            app:destination="@id/modifyEmailFragment" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
@@ -52,4 +55,13 @@
         android:name="com.example.projetobix.presentation.favorite.FavoriteFragment"
         android:label="FavoriteFragment"
         tools:layout="@layout/fragment_favorite"/>
+    <fragment
+        android:id="@+id/modifyEmailFragment"
+        android:name="com.example.projetobix.presentation.modifyEmail.ModifyEmailFragment"
+        android:label="ModifyEmailFragment"
+        tools:layout="@layout/fragment_modify_email">
+        <action
+            android:id="@+id/modifyEmailFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
 </navigation>

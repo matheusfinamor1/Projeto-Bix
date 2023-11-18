@@ -41,7 +41,7 @@
     <string name="text_tv_recover_screen">Digite o e-mail que deseja recuperar a senha</string>
 
     <string name="message_failure_reset_password">Houve uma falha ao redefinir sua senha, tente novamente mais tarde!</string>
-    <string name="message_failure_reset_password_generic">Houve uma falha, tente novamente mais tarde!</string>
+    <string name="message_failure_generic">Houve uma falha, tente novamente mais tarde!</string>
     <string name="message_email_send">Verifique sua caixa de e-mail, caso não encontre o e-mail lá, verifique o seu <font color="#000000">lixo eletrônico</font>.</string>
     <string name="message_email_different">Os e-mails digitados não são iguais. Por favor, digite o mesmo e-mail para que se consiga fazer a confirmação do mesmo.</string>
     <string name="message_empty_fields">Preencha todos os campos para que se consiga ser feita a recuperação da senha.</string>
@@ -69,6 +69,14 @@
     <string name="text_repl_password">Você deseja mesmo alterar a senha? Caso deseje, clique no botão <font color="#000000">confirmar</font>, para que seja enviado para seu email cadastrado, uma mensagem disponibilizando a troca da senha.</string>
     <string name="text_btn_conf">Confirmar</string>
     <string name="text_btn_canc">Cancelar</string>
+    <string name="title_error_modify_email">Erro ao alterar o e-mail</string>
+    <string name="text_error_modify_email">O e-mail e/ou a senha digitada não são iguais ao da sessão atual, por favor, verifique se o e-mail atual e senha estão corretos.</string>
+    <string name="title_confir_modify_email">E-mail de confirmação</string>
+    <string name="text_confirm_modify_email">Para concluir a alteração, foi enviado para o novo e-mail, uma mensagem para confirmação da troca. Por favor, verifique sua caixa de entrada, caso não encontre nada referente a troca de e-mail, verifique seu lixo eletrônico e confirme a troca dos e-mails.</string>
+    <string name="text_tv_modify_email">Alterar e-mail</string>
+    <string name="text_til_current_email">e-mail atual</string>
+    <string name="text_til_new_email">novo e-mail</string>
+    <string name="text_btn_modify">Alterar</string>
 
 
 </resources>

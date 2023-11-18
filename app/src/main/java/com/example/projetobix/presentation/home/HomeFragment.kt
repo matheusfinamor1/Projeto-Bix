@@ -15,7 +15,7 @@ import com.example.projetobix.databinding.FragmentHomeBinding
 import com.example.projetobix.mock.post
 import com.example.projetobix.presentation.base.BaseFragmentWithBottomNav
 import com.example.projetobix.presentation.base.BottomNavigationViewAlphaListener
-import com.example.projetobix.presentation.dialog.ModifyPasswordBottomSheetDialogFragment
+import com.example.projetobix.presentation.dialog.modifyPassword.ModifyPasswordBottomSheetDialogFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
@@ -71,7 +71,8 @@ class HomeFragment : BaseFragmentWithBottomNav<FragmentHomeBinding>(),
         binding.navHome.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_alt_email -> {
-                    Toast.makeText(context, "Alterar email click", Toast.LENGTH_LONG).show()
+                    val directions = HomeFragmentDirections.homeFragmentToModifyEmailFragment()
+                    findNavController().navigate(directions)
                     true
                 }
 

@@ -44,7 +44,7 @@ class RecoverPasswordFragment : Fragment() {
             msgFailureSendRecoverPassword.observe(viewLifecycleOwner) {
                 msgToast = when (it) {
                     is Exception -> getString(R.string.message_failure_reset_password)
-                    else -> getString(R.string.message_failure_reset_password_generic)
+                    else -> getString(R.string.message_failure_generic)
                 }
                 val alertDialog = handlerAlertDialog(
                     requireContext(),
